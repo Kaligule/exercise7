@@ -130,15 +130,58 @@ pmult' x y = toTwoChars
            $ pmult (fromTwoChars x) (fromTwoChars y)
 \end{code}
 
-Testing
-=======
-(stoppt mich, oder die Folien hören niemals auf)
-================================================
+Ausgabe
+-------
+
+Ausgabe, wenn wir ein Produkt ausrechnen.
 
 \begin{code}
+showMult :: TwoChars -> TwoChars -> IO()
+showMult ab cd = putStrLn
+                 $ showTwoChars ab ++ "*"
+                 ++ showTwoChars cd ++ "=" ++
+                 showTwoChars (pmult' ab cd)
+  where
+    showTwoChars :: TwoChars -> String
+    showTwoChars (a,b) = '(' : a : b : ")"
+\end{code}
 
+Lösungssatz
+-----------
+
+\begin{code}
 main = do
-  testAll
+  showMult ('5','e') ('8','3')  -- (5e)*(83)=(36)
+  showMult ('7','f') ('4','a')  -- (7f)*(4a)=(d9)
+  showMult ('4','0') ('7','5')  -- (40)*(75)=(44)
+\end{code}
+
+Dankeschön
+==========
+
+Anhang
+------
+
+Ab hier werden nur noch meine Tests dokumentiert. Seeeehr langweilig.
+Gehört aber streng genommen zum Code schreiben dazu.
+
+
+
+
+
+
+
+
+
+
+
+Testing
+=======
+
+Tests ausführen
+---------------
+
+\begin{code}
 
 testAll :: IO ()
 testAll = do
@@ -154,9 +197,8 @@ testAll = do
   mapM_ (Q.quickCheck . checkPmult) knownPmultPairs
   Q.quickCheck prop_PmultComutative
   Q.quickCheck prop_PmultExplicit
-  
-from = fromTwoChars
-to = toTwoChars
+
+
 
 \end{code}
 
@@ -201,6 +243,9 @@ Testing: Konvertierung TwoChar <-> Word8
 Beim wiederhohlten hin und her konvertieren sollte sich nichts verändern.
 
 \begin{code}
+from = fromTwoChars
+to = toTwoChars
+
 prop_FromToFromTwoChars :: TwoChars -> Bool
 prop_FromToFromTwoChars bigram =
   (from . to . from) bigram == from bigram

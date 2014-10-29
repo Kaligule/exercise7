@@ -1,6 +1,13 @@
 Exercise 7
 ==========
 
+Code zum runterladen
+--------------------
+
+\begin{center}
+https://github.com/Kaligule/exercise7
+\end{center}
+
 Importe
 -------
 
@@ -77,7 +84,7 @@ toTwoChars byte =
 xtime
 -----
 
-Wenn das erste Bit ```1``` ist macht xtime einen Linksshift und verxodert mit dem 'magischen' Polynom. Wenn nicht, machen wir nur den Linksshift.
+Wenn das erste Bit ```1``` ist macht xtime einen Linksshift und verxodert mit dem _magischen Polynom_. Wenn nicht, machen wir nur den Linksshift.
 
 \begin{code}
 xtime :: Word8 -> Word8
@@ -159,24 +166,23 @@ main = do
 Dankeschön
 ==========
 
+
+
+
+
+
+
+
+
+
+
+
+
 Anhang
 ------
 
 Ab hier werden nur noch meine Tests dokumentiert. Seeeehr langweilig.
 Gehört aber streng genommen zum Code schreiben dazu.
-
-
-
-
-
-
-
-
-
-
-
-Testing
-=======
 
 Tests ausführen
 ---------------
